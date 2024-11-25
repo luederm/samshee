@@ -1,7 +1,7 @@
 import re
 import json
 from collections import OrderedDict
-from typing import Optional, Callable, cast
+from typing import Optional, Callable, cast, Union
 
 from samshee.sectionedsheet import (
     Settings,
@@ -26,7 +26,7 @@ class SampleSheetV2:
     def __init__(
         self,
         secsheet: SectionedSheet = SectionedSheet(),
-        validation: list[Callable | dict] = [
+        validation: list[Union[Callable, dict]] = [
             {"$ref": "urn:samshee:illuminav2/v1"},
             illuminasamplesheetv2logic,
         ],
@@ -49,7 +49,7 @@ class SampleSheetV2:
             sectionname = secname(key)
             if key.endswith("_Settings"):
                 if sectionname not in self.applications:
-                    self.applications[sectionname] = dict[str, Settings | Data]()
+                    self.applications[sectionname] = dict[str, Union[Settings, Data]]()
                 self.applications[sectionname]["settings"] = cast(
                     Settings, secsheet[key]
                 )

@@ -1,6 +1,6 @@
 import itertools
 import re
-from typing import Callable, cast, Tuple, Optional
+from typing import Callable, cast, Tuple, Optional, Union
 
 from jsonschema import Draft202012Validator
 
@@ -472,8 +472,8 @@ def check_index_distance(doc: SectionedSheet, mindist: Optional[int] = None) -> 
 
     def check_index(
         doc: SectionedSheet,
-        indexnames: list[str] | str,
-        mismatchnames: list[str] | str,
+        indexnames: Union[list[str], str],
+        mismatchnames: Union[list[str], str],
         mindist: Optional[int] = None,
     ):
         if isinstance(indexnames, str):
@@ -595,7 +595,7 @@ def nextseq1k2klogic(doc: SectionedSheet) -> None:
 
 def validate(
     doc: SectionedSheet,
-    validation: Callable | dict | list[Callable | dict],
+    validation: Union[Callable, dict, list[Union[Callable, dict]]],
     registry=registry,
 ) -> None:
     """validation may either be a callable function or a dict specifying a (in-built or retrievable) json schema, e.g. {"$ref": "urn:samshee:illuminav2/v1"}"""
