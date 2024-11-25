@@ -1,11 +1,8 @@
 import itertools
 import re
-from typing import Callable, cast, Mapping, Tuple, Optional
-
-import json
+from typing import Callable, cast, Tuple, Optional
 
 from jsonschema import Draft202012Validator
-from jsonschema.exceptions import ErrorTree, best_match
 
 from samshee.sectionedsheet import SectionedSheet, Settings, Data
 

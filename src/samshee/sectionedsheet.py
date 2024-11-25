@@ -1,6 +1,6 @@
 from pathlib import Path
 from collections import OrderedDict
-from typing import TypeAlias, Union
+from typing import Union
 import re
 from io import StringIO, IOBase, TextIOWrapper, TextIOBase
 import csv
@@ -8,7 +8,7 @@ import json
 import itertools
 
 """A simple value type."""
-ValueType: TypeAlias = Union[str, int, float, bool]
+ValueType = Union[str, int, float, bool]
 
 
 class Settings(OrderedDict[str, ValueType]):
@@ -74,7 +74,7 @@ class Array(list[ValueType]):
 
 
 """any section"""
-Section: TypeAlias = Union[Settings, Data, Array]
+Section = Union[Settings, Data, Array]
 
 
 class SectionedSheet(OrderedDict[str, Section]):
